@@ -137,4 +137,44 @@ PR reviews required for all changes.
 ### 12.7 Automated Enforcement
 CI pipeline runs `flake8` and `pytest` on each commit.
 
+## 13 Detailed System Architecture
+
+Below is the recommended file and module layout for a full Buster deployment. Each component maps
+directly to one of the agents or support utilities described above.
+
+```
+src/
+  buster/
+    __init__.py
+    discord_bot.py        # entrypoint, Discord command registration
+    orchestrator.py       # implements BusterOrchestrator logic
+    compiler/
+      __init__.py
+      report_compiler.py  # fetch messages and links, build report data
+    validation/
+      __init__.py
+      schema.py           # JSON schema definitions
+      data_validation.py  # DataValidation checks
+    best_practices/
+      __init__.py
+      scoring.py          # scoring and compliance advice
+      guidelines.py       # reference best-practices documentation
+tests/
+  test_orchestrator.py
+  test_compiler.py
+  test_data_validation.py
+  test_best_practices.py
+docs/
+  architecture.md         # high level diagrams and design notes
+  usage.md                # instructions for running the bot
+  ofac_schema.json        # canonical OFAC report schema
+AGENTS.md
+README.md
+requirements.txt
+```
+
+This layout keeps orchestrator, compiler, validation logic and best-practice rules in separate
+modules while grouping them under a single package for clarity. Tests live alongside the code they
+exercise, and all documentation resides in the `docs/` directory.
+
 # Buster Agent Service Documentation
