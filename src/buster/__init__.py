@@ -1,6 +1,8 @@
 """Buster package for automating OFAC report submissions."""
+
 import logging
 import os
+
 
 def setup_logging() -> None:
     """Configure root logger with level and format."""
