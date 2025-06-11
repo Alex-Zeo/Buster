@@ -4,3 +4,17 @@ import importlib
 def test_data_validation_import():
     module = importlib.import_module('buster.validation.data_validation')
     assert hasattr(module, 'validate_report')
+
+
+def test_validate_report_returns_true_for_valid_data():
+    validate_report = importlib.import_module(
+        'buster.validation.data_validation'
+    ).validate_report
+    assert validate_report({"messages": ["m"]}) is True
+
+
+def test_validate_report_returns_false_for_invalid_data():
+    validate_report = importlib.import_module(
+        'buster.validation.data_validation'
+    ).validate_report
+    assert validate_report({"other": "x"}) is False
