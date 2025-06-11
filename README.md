@@ -36,8 +36,8 @@ and logged for auditing.
 ## Repository Layout
 
 ```
-src/    - bot source code (not yet included)
-tests/  - automated tests (empty for now)
+src/    - bot source code
+tests/  - automated tests
 docs/   - additional documentation
 ```
 
