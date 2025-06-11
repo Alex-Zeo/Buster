@@ -1,4 +1,9 @@
 # Usage
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
 
 Buster requires a few environment variables to run:
 
@@ -12,3 +17,5 @@ Install dependencies and run the bot:
 pip install -r requirements.txt
 python -m buster.discord_bot
 ```
+
+The bot uses Python 3.11 or newer and requires internet access to file reports.
