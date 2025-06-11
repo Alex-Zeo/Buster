@@ -1,19 +1,20 @@
 # Usage
-
 Install the required packages:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Set the following environment variables before starting the bot:
+Buster requires a few environment variables to run:
 
-- `DISCORD_TOKEN` &mdash; Discord bot token used for authentication.
-- `OFAC_API_KEY` &mdash; API key for submitting reports to OFAC.
+- `DISCORD_TOKEN` – Discord bot token used to connect to the API.
+- `DISCORD_APP_ID` – Application ID for slash command registration.
+- `BUSTER_LOG_LEVEL` – Optional log level (default is `INFO`).
 
-Run the bot with:
+Install dependencies and run the bot:
 
 ```bash
+pip install -r requirements.txt
 python -m buster.discord_bot
 ```
 
