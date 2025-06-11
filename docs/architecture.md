@@ -4,6 +4,12 @@ This repository follows the canonical layout described in `AGENTS.md`.
 The structure keeps orchestrator, compiler, validation and best practice
 logic modular while grouping them under a single package.
 
+At a high level the bot is driven by the **BusterOrchestrator**. It receives
+commands from Discord and dispatches them to the `ReportCompiler` to gather
+messages and linked content. The resulting payload is checked by the
+`DataValidation` component before being scored with the `BestPractices`
+module and finally submitted to OFAC.
+
 ```text
 src/
   buster/

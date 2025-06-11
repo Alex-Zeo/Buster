@@ -54,6 +54,8 @@ pip install -r requirements.txt
 ```
 
 See [docs/usage.md](docs/usage.md) for setup instructions and more details on running the bot.
+The high-level design is documented in [docs/architecture.md](docs/architecture.md),
+and the placeholder OFAC schema can be found at [docs/ofac_schema.json](docs/ofac_schema.json).
 
 ## Running Checks
 
