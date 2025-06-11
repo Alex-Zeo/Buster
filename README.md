@@ -53,6 +53,8 @@ Install the dependencies with:
 pip install -r requirements.txt
 ```
 
+See [docs/usage.md](docs/usage.md) for setup instructions and more details on running the bot.
+
 ## Running Checks
 
 Before submitting changes, run the linters and tests:
@@ -79,6 +81,7 @@ The project follows PEP8 with a 100 character line limit.
 ## Deployment
 
 The production bot is intended to run in a containerized environment. CI/CD is
-handled through GitHub Actions which will execute `flake8` and `pytest` on each
-commit.
+handled through GitHub Actions. The workflow defined in
+`.github/workflows/ci.yml` runs `flake8` and `pytest` on every push and pull
+request.
 
