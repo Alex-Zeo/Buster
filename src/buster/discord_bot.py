@@ -7,6 +7,11 @@ import os
 
 import discord
 
+logging.basicConfig(
+    level=getattr(logging, os.getenv("BUSTER_LOG_LEVEL", "INFO").upper(), logging.INFO),
+    format="%(asctime)s %(levelname)s %(message)s",
+)
+
 logger = logging.getLogger(__name__)
 
 
