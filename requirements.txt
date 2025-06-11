@@ -1,0 +1,4 @@
+discord.py>=2.3
+requests>=2.31
+flake8>=7.0
+pytest>=8.2
