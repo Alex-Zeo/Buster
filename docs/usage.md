@@ -19,4 +19,4 @@ Install dependencies and run the bot:
     python -m buster.discord_bot
     ```
 
-The [architecture documentation](architecture.md) provides more details on how the components fit together
+The [architecture documentation](architecture.md) provides more details on how the components fit together.
