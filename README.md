@@ -55,6 +55,14 @@ pip install -r requirements.txt
 
 See [docs/usage.md](docs/usage.md) for setup instructions and more details on running the bot.
 
+## Environment Variables
+
+The bot reads its configuration from environment variables:
+
+- `DISCORD_TOKEN` – Discord bot token used for authentication.
+- `DISCORD_APP_ID` – Application ID for registering slash commands.
+- `BUSTER_LOG_LEVEL` – Optional logging level (defaults to `INFO`).
+
 ## Running Checks
 
 Before submitting changes, run the linters and tests:
