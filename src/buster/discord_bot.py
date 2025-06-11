@@ -1,4 +1,4 @@
-"""Minimal Discord bot entry point."""
+"""Discord bot entry point and command registration."""
 
 from __future__ import annotations
 
