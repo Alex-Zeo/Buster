@@ -9,4 +9,8 @@ def test_best_practices_import():
 
 
 def test_score_report_counts_messages():
-    assert score_report({"messages": ["x", "y"]}) == 2
+    messages = [
+        {"content": "x", "author": "a", "timestamp": "t", "evidence": []},
+        {"content": "y", "author": "b", "timestamp": "t", "evidence": []},
+    ]
+    assert score_report({"messages": messages}) == 2

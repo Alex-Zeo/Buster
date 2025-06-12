@@ -64,6 +64,25 @@ The bot reads its configuration from environment variables:
 - `DISCORD_TOKEN` – Discord bot token used for authentication.
 - `DISCORD_APP_ID` – Application ID for registering slash commands.
 - `BUSTER_LOG_LEVEL` – Optional logging level for JSON logs (defaults to `INFO`).
+- `OFAC_API_URL` – HTTP endpoint used to submit validated reports.
+
+## Discord Commands
+
+The bot exposes multiple slash commands:
+- `/active` – print selected active report
+- `/rename` – rename the selected active report
+- `/list` – list all active reports
+- `/switch` – select a different active OFAC report
+- `/find` – OpenAI deep research query used to gather evidence and add data to the OFAC report.
+- `/add` – user prompt or browse links to gather evidence for the
+- `/print` – curates and stores the content from the latest messages in selected report including deep research results, user messages, Buster messages, user links and their related content to compile the OFAC report.
+- `/adjust` – tweak, rewrite, or reword a section of the OFAC report
+- `/optimize` – rewrites the OFAC report prioritizing the best practices guidelines with all the relevant available data (messages, deep research, links, context) 
+- `/submitreport` – collects the latest messages in selected report including the deep research results and submits the most relevant 
+- `/stats` – count of number of reports submitted, count of pieces of evidence, count of individuals or entities
+
+After report submission dont make specifics of 
+
 
 ## Running Checks
 
@@ -95,3 +114,23 @@ handled through GitHub Actions. The workflow defined in
 `.github/workflows/ci.yml` runs `flake8` and `pytest` on every push and pull
 request.
 
+
+## Container Usage
+
+Build the Docker image:
+
+```bash
+docker build -t buster .
+```
+
+Run the bot from the image (set your credentials as environment variables):
+
+```bash
+docker run --rm -e DISCORD_TOKEN=TOKEN -e DISCORD_APP_ID=APPID buster
+```
+
+To execute the test suite inside the container use:
+
+```bash
+docker run --rm --entrypoint pytest buster
+```

@@ -1,8 +1,98 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "OFACReport",
-  "description": "Placeholder schema for an OFAC violation report.",
+  "description": "Schema for OFAC violation reports produced by Buster.",
   "type": "object",
-  "properties": {},
-  "required": []
+  "properties": {
+      "reporter_id": {
+          "type": "string",
+          "description": "Identifier of the Discord user submitting the report."
+      },
+      "messages": {
+          "type": "array",
+          "description": "List of messages related to the violation.",
+          "items": {
+              "type": "string"
+          }
+      },
+      "evidence_urls": {
+          "type": "array",
+          "description": "Links to referenced evidence.",
+          "items": {
+              "type": "string",
+              "format": "uri"
+          }
+      },
+      "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Report creation time in ISO 8601 format."
+      },
+      "scores": {
+          "type": "object",
+          "description": "Scoring metadata for best practice compliance.",
+          "properties": {
+              "best_practices": {
+                  "type": "number"
+              },
+              "completeness": {
+                  "type": "number"
+              }
+          }
+      },
+      "cover_letter": {
+          "type": "string"
+      },
+      "executive_summary": {
+          "type": "string"
+      },
+      "reporting_entity_information": {
+          "type": "string"
+      },
+      "apparent_violations": {
+          "type": "string"
+      },
+      "root_cause_and_risk_assessment": {
+          "type": "string"
+      },
+      "internal_investigation_methodology": {
+          "type": "string"
+      },
+      "compliance_program": {
+          "type": "string"
+      },
+      "corrective_and_remedial_actions": {
+          "type": "string"
+      },
+      "cooperation_and_mitigating_factors": {
+          "type": "string"
+      },
+      "certification_and_attestation": {
+          "type": "string"
+      },
+      "index_of_exhibits": {
+          "type": "string"
+      },
+      "exhibits": {
+          "type": "string"
+      }
+  },
+  "required": [
+      "reporter_id",
+      "messages",
+      "evidence_urls",
+      "timestamp",
+      "cover_letter",
+      "executive_summary",
+      "reporting_entity_information",
+      "apparent_violations",
+      "root_cause_and_risk_assessment",
+      "internal_investigation_methodology",
+      "compliance_program",
+      "corrective_and_remedial_actions",
+      "cooperation_and_mitigating_factors",
+      "certification_and_attestation",
+      "index_of_exhibits",
+      "exhibits"
+  ]
 }

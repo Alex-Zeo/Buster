@@ -10,9 +10,10 @@ Buster requires a few environment variables to run:
 
 - `DISCORD_TOKEN` – Discord bot token used to connect to the API.
 - `DISCORD_APP_ID` – Application ID for slash command registration.
-- `BUSTER_LOG_LEVEL` – Optional log level for JSON logs (default is `INFO`).
+- `BUSTER_LOG_LEVEL` – Optional log level (default is `INFO`).
+- `OFAC_API_URL` – HTTP endpoint used to submit validated reports.
 
-3. Start the bot (this repository does not yet include the implementation).
+3. Start the bot and use the `/report` command to file an OFAC report.
 Install dependencies and run the bot:
 
     ```bash
