@@ -8,7 +8,6 @@ from typing import Any
 
 import requests
 
-from .compiler.report_compiler import ReportCompiler
 from .validation.data_validation import validate_report
 from .best_practices.scoring import score_report
 
@@ -20,20 +19,8 @@ class BusterOrchestrator:
     """Coordinates message intake and dispatches work to other agents."""
 
     def __init__(self) -> None:
-        self.compiler = ReportCompiler()
+        pass
 
-    def handle_report_command(self, user_id: str, messages: list[str]) -> dict:
-        """Compile a report from messages and return structured data."""
-        logger.info(
-            "received report command",
-            extra={"user_id": user_id, "message_count": len(messages)},
-        )
-        result = self.compiler.compile(messages)
-        logger.info(
-            "report command compiled",
-            extra={"user_id": user_id, "message_count": len(messages)},
-        )
-        
     def handle_report_command(self, messages: list[str]) -> dict:
         """Compile, validate and score a report from provided messages."""
         logger.info(
@@ -41,8 +28,17 @@ class BusterOrchestrator:
             extra={"message_count": len(messages)},
         )
 
-        report = self.compiler.compile(messages)
-        logger.info("report compiled", extra={"return_value": report})
+        report = {
+            "messages": [
+                {
+                    "author": "",  # placeholder
+                    "timestamp": "",
+                    "content": msg,
+                    "evidence": [],
+                }
+                for msg in messages
+            ]
+        }
 
         if not validate_report(report):
             logger.error("report validation failed", extra={"report": report})
