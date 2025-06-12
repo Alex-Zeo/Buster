@@ -15,7 +15,7 @@ class BusterOrchestrator:
 
     def __init__(self) -> None:
         self.compiler = ReportCompiler()
-
+        
     def handle_report_command(self, messages: list[str]) -> dict:
         """Compile, validate and score a report from provided messages."""
         logger.info(
@@ -35,4 +35,5 @@ class BusterOrchestrator:
 
         result = {"report": report, "score": score}
         logger.info("report command completed", extra={"return_value": result})
+
         return result
