@@ -1,8 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "OFACReport",
-  "description": "Placeholder schema for an OFAC violation report.",
+  "description": "Schema for an OFAC violation report.",
   "type": "object",
-  "properties": {},
-  "required": []
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "required": ["messages"]
 }
