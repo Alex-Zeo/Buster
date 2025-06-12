@@ -10,7 +10,8 @@ def test_validate_report_returns_true_for_valid_data():
     validate_report = importlib.import_module(
         'buster.validation.data_validation'
     ).validate_report
-    assert validate_report({"messages": ["m"]}) is True
+    data = {"messages": [{"author": "a", "timestamp": "t", "content": "m", "evidence": []}]}
+    assert validate_report(data) is True
 
 
 def test_validate_report_returns_false_for_invalid_data():
