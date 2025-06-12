@@ -63,15 +63,26 @@ The bot reads its configuration from environment variables:
 
 - `DISCORD_TOKEN` – Discord bot token used for authentication.
 - `DISCORD_APP_ID` – Application ID for registering slash commands.
-- `BUSTER_LOG_LEVEL` – Optional logging level (defaults to `INFO`).
+- `BUSTER_LOG_LEVEL` – Optional logging level for JSON logs (defaults to `INFO`).
 - `OFAC_API_URL` – HTTP endpoint used to submit validated reports.
 
 ## Discord Commands
 
-The bot exposes a single slash command:
+The bot exposes multiple slash commands:
+- `/active` – print selected active report
+- `/rename` – rename the selected active report
+- `/list` – list all active reports
+- `/switch` – select a different active OFAC report
+- `/find` – OpenAI deep research query used to gather evidence and add data to the OFAC report.
+- `/add` – user prompt or browse links to gather evidence for the
+- `/print` – curates and stores the content from the latest messages in selected report including deep research results, user messages, Buster messages, user links and their related content to compile the OFAC report.
+- `/adjust` – tweak, rewrite, or reword a section of the OFAC report
+- `/optimize` – rewrites the OFAC report prioritizing the best practices guidelines with all the relevant available data (messages, deep research, links, context) 
+- `/submitreport` – collects the latest messages in selected report including the deep research results and submits the most relevant 
+- `/stats` – count of number of reports submitted, count of pieces of evidence, count of individuals or entities
 
-- `/report` – collects the latest messages in the channel and submits them as an
-  OFAC report.
+After report submission dont make specifics of 
+
 
 ## Running Checks
 

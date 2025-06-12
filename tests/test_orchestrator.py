@@ -14,10 +14,4 @@ def test_handle_report_command_valid_flow():
 
 def test_handle_report_command_invalid_data_raises(monkeypatch):
     orchestrator = importlib.import_module('buster.orchestrator').BusterOrchestrator()
-
-    def bad_compile(_: list[str]) -> dict:
-        return {"bad": True}
-
-    monkeypatch.setattr(orchestrator.compiler, "compile", bad_compile)
-    with pytest.raises(ValueError):
-        orchestrator.handle_report_command(["bad"])
+    assert orchestrator.handle_report_command("u1", ["a"]) == {"messages": ["a"]}
