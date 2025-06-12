@@ -64,6 +64,14 @@ The bot reads its configuration from environment variables:
 - `DISCORD_TOKEN` – Discord bot token used for authentication.
 - `DISCORD_APP_ID` – Application ID for registering slash commands.
 - `BUSTER_LOG_LEVEL` – Optional logging level (defaults to `INFO`).
+- `OFAC_API_URL` – HTTP endpoint used to submit validated reports.
+
+## Discord Commands
+
+The bot exposes a single slash command:
+
+- `/report` – collects the latest messages in the channel and submits them as an
+  OFAC report.
 
 ## Running Checks
 
