@@ -8,4 +8,4 @@ def test_orchestrator_import():
 
 def test_handle_report_command_returns_messages_dict():
     orchestrator = importlib.import_module('buster.orchestrator').BusterOrchestrator()
-    assert orchestrator.handle_report_command(["a"]) == {"messages": ["a"]}
+    assert orchestrator.handle_report_command("u1", ["a"]) == {"messages": ["a"]}
