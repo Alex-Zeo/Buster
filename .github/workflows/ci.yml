@@ -9,12 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Build Docker image
+        run: docker build -t buster .
       - name: Run flake8
-        run: flake8
+        run: docker run --rm --entrypoint flake8 buster
       - name: Run pytest
-        run: pytest
+        run: docker run --rm --entrypoint pytest buster

@@ -103,3 +103,23 @@ handled through GitHub Actions. The workflow defined in
 `.github/workflows/ci.yml` runs `flake8` and `pytest` on every push and pull
 request.
 
+
+## Container Usage
+
+Build the Docker image:
+
+```bash
+docker build -t buster .
+```
+
+Run the bot from the image (set your credentials as environment variables):
+
+```bash
+docker run --rm -e DISCORD_TOKEN=TOKEN -e DISCORD_APP_ID=APPID buster
+```
+
+To execute the test suite inside the container use:
+
+```bash
+docker run --rm --entrypoint pytest buster
+```
