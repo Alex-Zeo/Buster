@@ -56,5 +56,48 @@ def test_submit_report_posts(monkeypatch):
     response.raise_for_status = mock.MagicMock()
     post_mock.return_value = response
     monkeypatch.setattr("buster.orchestrator.requests.post", post_mock)
-    assert orchestrator.submit_report({"messages": []}) is True
-    post_mock.assert_called_with("http://example.com", json={"messages": []}, timeout=10)
+    report = {
+        "reporter_id": "u",
+        "messages": ["hi"],
+        "evidence_urls": ["http://e.com"],
+        "timestamp": "2024-01-01T00:00:00Z",
+        "scores": {},
+        "cover_letter": "",
+        "executive_summary": "",
+        "reporting_entity_information": "",
+        "apparent_violations": "",
+        "root_cause_and_risk_assessment": "",
+        "internal_investigation_methodology": "",
+        "compliance_program": "",
+        "corrective_and_remedial_actions": "",
+        "cooperation_and_mitigating_factors": "",
+        "certification_and_attestation": "",
+        "index_of_exhibits": "",
+        "exhibits": "",
+    }
+    assert orchestrator.submit_report(report) is True
+    post_mock.assert_called_with("http://example.com", json=report, timeout=10)
+
+
+def test_logs_are_json(monkeypatch):
+    """Ensure bot logs are emitted in JSON format."""
+    import io
+    import json
+    import logging
+
+    from buster import JsonFormatter
+    from buster.discord_bot import logger
+
+    stream = io.StringIO()
+    handler = logging.StreamHandler(stream)
+    handler.setFormatter(JsonFormatter())
+    root = logging.getLogger()
+    root.handlers = [handler]
+    root.setLevel(logging.INFO)
+
+    logger.info("hello", extra={"foo": "bar"})
+
+    stream.seek(0)
+    data = json.loads(stream.getvalue())
+    assert data["message"] == "hello"
+    assert data["foo"] == "bar"
