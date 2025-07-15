@@ -1,6 +1,6 @@
-# Buster
+# Buster Agent
 
-Buster is a Discord bot that collects user messages and referenced content to
+Buster is a Discord agent that collects user messages and referenced content to
 build and submit sanction violation reports to the Office of Foreign Assets
 Control (OFAC). This repository contains a lightweight prototype of that service
 along with documentation outlining the intended architecture.
